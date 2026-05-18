@@ -1,0 +1,18 @@
+# 路径必须是：.circleci/config.yml（根目录下的 .circleci 文件夹里）
+version: 2.1
+
+# 定义一个简单的任务
+jobs:
+  webhook-test-job:
+    # 使用轻量的官方镜像，启动快、不会出错
+    docker:
+      - image: circleci/alpine:latest
+    steps:
+      # 运行一条测试命令，确保任务能跑完
+      - run: echo "CircleCI Workflow Completed - Webhook Test"
+
+# 定义工作流（CircleCI 必须有工作流才能触发）
+workflows:
+  test-workflow:
+    jobs:
+      - webhook-test-job
